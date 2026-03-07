@@ -9,7 +9,7 @@ import { useTheme } from "next-themes";
 
 const menuItems = [
   { label: "Home", url: "/" },
-  { label: "About", url: "/about" },
+  // { label: "About", url: "/about" },
   { label: "Services", url: "/services" },
   { label: "Portfolio", url: "/portfolio" },
 ];
