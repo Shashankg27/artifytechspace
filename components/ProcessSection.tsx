@@ -327,60 +327,67 @@ function Card3D({ step, index }: { step: typeof steps[0]; index: number }) {
       >
         {/* FRONT: Colorful Background with Title */}
         <div 
-          className={`absolute inset-0 p-10 rounded-[2.5rem] bg-gradient-to-br ${step.gradient} shadow-2xl z-20 flex flex-col items-center justify-center text-center overflow-hidden border border-white/20`}
-          style={{ backfaceVisibility: "hidden" }}
+          className={`absolute inset-0 p-5 rounded-[1.25rem] bg-gradient-to-br ${step.gradient} shadow-2xl z-20 flex flex-col items-center justify-center text-center overflow-hidden border border-white/20`}
+          style={{ 
+            backfaceVisibility: "hidden",
+            boxShadow: `0 15px 30px -8px rgba(0, 0, 0, 0.5), 0 0 12px -4px ${step.color}66`
+          }}
         >
           {/* Decorative Elements */}
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.2)_0%,transparent_50%)] pointer-events-none" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15)_0%,transparent_50%)] pointer-events-none" />
           
-          <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight uppercase relative z-10">
+          <h3 className="text-xl md:text-2xl font-black text-white tracking-tight leading-tight uppercase relative z-10">
             {step.title}
           </h3>
           
-          <div className="mt-8 h-1 w-20 bg-white/40 rounded-full group-hover:w-32 transition-all duration-500 relative z-10" />
+          <div className="mt-4 h-1 w-14 bg-white/40 rounded-full group-hover:w-20 transition-all duration-500 relative z-10" />
           
-          <div className="mt-10 text-[11px] font-black uppercase tracking-[0.4em] text-white/60 group-hover:text-white transition-colors relative z-10">
+          <div className="mt-6 text-[9px] font-black uppercase tracking-[0.3em] text-white/60 group-hover:text-white transition-colors relative z-10">
             Tap to Reveal
           </div>
         </div>
 
         {/* BACK: Colorful Background with Description */}
         <div 
-          className={`relative p-10 rounded-[2.5rem] bg-gradient-to-br ${step.gradient} shadow-2xl border border-white/20`}
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+          className={`relative p-5 rounded-[1.25rem] bg-gradient-to-br ${step.gradient} shadow-2xl border border-white/20`}
+          style={{ 
+            backfaceVisibility: "hidden", 
+            transform: "rotateY(180deg)",
+            boxShadow: `0 15px 30px -8px rgba(0, 0, 0, 0.5), 0 0 12px -4px ${step.color}66`
+          }}
         >
           {/* Decorative Gloss */}
-          <div className="absolute inset-0 bg-black/10 backdrop-blur-sm rounded-[2.5rem]" />
+          <div className="absolute inset-0 bg-black/10 backdrop-blur-sm rounded-[1.25rem]" />
 
           <div className="relative z-10">
             {/* Title */}
-            <h3 className="text-2xl md:text-3xl font-black text-white mb-6 tracking-tight uppercase border-b border-white/20 pb-4">
+            <h3 className="text-lg md:text-xl font-black text-white mb-3 tracking-tight uppercase border-b border-white/20 pb-2">
               {step.title}
             </h3>
             
             {/* Description */}
-            <p className="text-white/90 text-base md:text-lg leading-relaxed font-medium mb-10">
+            <p className="text-white/90 text-xs md:text-sm leading-relaxed font-medium mb-4">
               {step.description}
             </p>
             
             {/* Progress/Status Indicator */}
-            <div className="space-y-4">
-              <div className="h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
+            <div className="space-y-2">
+              <div className="h-0.5 w-full bg-white/20 rounded-full overflow-hidden">
                 <motion.div 
-                  className="h-full bg-white/80"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  transition={{ duration: 1.5, delay: 0.5 }}
+                   className="h-full bg-white/80"
+                   initial={{ width: 0 }}
+                   whileInView={{ width: "100%" }}
+                   transition={{ duration: 1.5, delay: 0.5 }}
                 />
               </div>
-              <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-white/70">
+              <div className="flex justify-between items-center text-[8px] font-black uppercase tracking-widest text-white/70">
                 <span>Process Excellence</span>
                 <span>Verified</span>
               </div>
             </div>
 
-            <div className="mt-12 flex justify-center">
-               <div className="px-6 py-2 rounded-full border border-white/30 bg-white/10 text-white text-[10px] font-black uppercase tracking-widest transition-all hover:bg-white hover:text-black">
+            <div className="mt-6 flex justify-center">
+               <div className="px-3 py-1 rounded-full border border-white/30 bg-white/10 text-white text-[8px] font-black uppercase tracking-widest transition-all hover:bg-white hover:text-black">
                  Artify Studio
                </div>
             </div>
@@ -485,7 +492,7 @@ export default function ProcessSection() {
                   <div className="hidden md:block md:w-1/2" />
                   
                   {/* Card Container */}
-                  <div className="w-full md:w-1/2 pl-20 md:pl-0 md:px-12">
+                  <div className="w-full md:w-1/2 pl-20 md:pl-0 md:px-12 max-w-sm">
                     <Card3D step={step} index={index} />
                   </div>
                 </div>
