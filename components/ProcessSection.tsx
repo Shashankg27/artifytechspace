@@ -336,13 +336,13 @@ function Card3D({ step, index }: { step: typeof steps[0]; index: number }) {
           {/* Decorative Elements */}
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15)_0%,transparent_50%)] pointer-events-none" />
           
-          <h3 className="text-xl md:text-2xl font-black light:text-white dark:text-black tracking-tight leading-tight uppercase relative z-10">
+          <h3 className="text-xl md:text-2xl font-black dark:text-black tracking-tight leading-tight uppercase relative z-10">
             {step.title}
           </h3>
           
           <div className="mt-4 h-1 w-14 bg-white/40 dark:bg-black/40 rounded-full group-hover:w-20 transition-all duration-500 relative z-10" />
           
-          <div className="mt-6 text-[9px] font-black uppercase tracking-[0.3em] text-white/60 dark:text-black/60 group-hover:text-white dark:group-hover:text-black transition-colors relative z-10">
+          <div className="mt-6 text-[9px] font-black uppercase tracking-[0.3em] text-black/60 dark:text-black/60 group-hover:text-white dark:group-hover:text-black transition-colors relative z-10">
             Tap to Reveal
           </div>
         </div>
@@ -361,12 +361,12 @@ function Card3D({ step, index }: { step: typeof steps[0]; index: number }) {
 
           <div className="relative z-10">
             {/* Title */}
-            <h3 className="text-lg md:text-xl font-black text-white dark:text-black mb-3 tracking-tight uppercase border-b border-white/20 dark:border-black/20 pb-2">
+            <h3 className="text-lg md:text-xl font-black text-black dark:text-black mb-3 tracking-tight uppercase border-b border-white/20 dark:border-black/20 pb-2">
               {step.title}
             </h3>
             
             {/* Description */}
-            <p className="text-white/90 dark:text-black/90 text-xs md:text-sm leading-relaxed font-medium mb-4">
+            <p className="text-black/90 dark:text-black/90 text-xs md:text-sm leading-relaxed font-medium mb-4">
               {step.description}
             </p>
             
@@ -380,14 +380,14 @@ function Card3D({ step, index }: { step: typeof steps[0]; index: number }) {
                    transition={{ duration: 1.5, delay: 0.5 }}
                 />
               </div>
-              <div className="flex justify-between items-center text-[8px] font-black uppercase tracking-widest text-white/70 dark:text-black/70">
+              <div className="flex justify-between items-center text-[8px] font-black uppercase tracking-widest text-black/70 dark:text-black/70">
                 <span>Process Excellence</span>
                 <span>Verified</span>
               </div>
             </div>
 
             <div className="mt-6 flex justify-center">
-               <div className="px-3 py-1 rounded-full border border-white/30 dark:border-black/30 bg-white/10 dark:bg-black/10 text-white dark:text-black text-[8px] font-black uppercase tracking-widest transition-all hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white">
+               <div className="px-3 py-1 rounded-full border border-white/30 dark:border-black/30 bg-white/10 dark:bg-black/10 text-black dark:text-black text-[8px] font-black uppercase tracking-widest transition-all hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white">
                  Artify Studio
                </div>
             </div>
