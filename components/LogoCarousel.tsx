@@ -35,8 +35,8 @@ export default function LogoCarousel() {
             key={index}
             className="flex-shrink-0 px-4"
           >
-            <div className="w-40 h-40 md:w-48 md:h-48 flex flex-col items-center justify-center p-6 bg-white/[0.03] dark:bg-white/[0.02] border border-white/10 rounded-3xl backdrop-blur-md transition-all duration-500 cursor-pointer group hover:bg-primary/5 hover:border-primary/30 hover:shadow-[0_0_30px_-10px_rgba(var(--primary-rgb),0.3)]">
-              <div className="relative w-16 h-16 md:w-20 md:h-20 mb-4 opacity-40 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+            <div className="w-40 h-40 md:w-48 md:h-48 flex flex-col items-center justify-center p-6 bg-gray-100 dark:bg-white/[0.02] border border-border/60 rounded-3xl backdrop-blur-md transition-all duration-500 cursor-pointer group hover:bg-gray-200 dark:hover:bg-white/[0.05] hover:border-primary/30 hover:shadow-[0_0_40px_-10px_rgba(var(--primary-rgb),0.2)] hover:-translate-y-1">
+              <div className="relative w-16 h-16 md:w-20 md:h-20 mb-4 opacity-100 grayscale-0 transition-all duration-500 transform group-hover:scale-110">
                 <Image
                   src={partner.logo}
                   alt={partner.name}
@@ -44,7 +44,7 @@ export default function LogoCarousel() {
                   className="object-contain dark:brightness-200"
                 />
               </div>
-              <p className="text-sm md:text-base font-medium text-muted-foreground group-hover:text-primary transition-colors text-center">
+              <p className="text-sm md:text-base font-medium text-foreground/70 group-hover:text-primary transition-colors text-center">
                 {partner.name}
               </p>
             </div>
