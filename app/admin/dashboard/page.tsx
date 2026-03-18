@@ -71,18 +71,9 @@ export default function AdminDashboard() {
 
   return (
     <div className="flex-1 flex flex-col p-6 lg:p-10">
-      <div className="flex justify-between items-center mb-10">
-        <div>
-          <h2 className="text-3xl font-black tracking-tight">Submissions</h2>
-          <p className="text-muted-foreground mt-2">Manage contact form inquiries.</p>
-        </div>
-        <button
-          onClick={handleLogout}
-          className="flex items-center space-x-2 bg-red-500/10 hover:bg-red-500/20 text-red-500 px-4 py-2 rounded-xl transition-colors text-sm font-semibold"
-        >
-          <LogOut className="w-4 h-4" />
-          <span>Logout</span>
-        </button>
+      <div className="mb-10">
+        <h2 className="text-3xl font-black tracking-tight">Submissions</h2>
+        <p className="text-muted-foreground mt-2">Manage contact form inquiries and project proposals.</p>
       </div>
 
       <div className="glass-premium rounded-3xl p-6 lg:p-8 flex-1 overflow-auto border border-border/50 shadow-2xl">

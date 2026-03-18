@@ -5,6 +5,7 @@ import { homeContent } from "@/lib/data";
 import { useRef, useState, useEffect } from "react";
 import * as LucideIcons from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ServiceItemProps {
   service: any;
@@ -100,10 +101,23 @@ function ServiceCardSticky({
   return (
     <motion.div style={{ opacity, y, scale, zIndex }} className="absolute inset-0">
       <div 
-        style={{ background: gradient, borderColor: `${color}20` }}
-        className="glass-neo p-8 md:p-16 rounded-[2rem] md:rounded-[4rem] h-full flex flex-col justify-between shadow-[0_50px_100px_rgba(0,0,0,0.1)] group transition-all duration-500"
+        style={{ borderColor: `${color}20` }}
+        className="glass-neo p-8 md:p-16 rounded-[2rem] md:rounded-[4rem] h-full flex flex-col justify-between shadow-[0_50px_100px_rgba(0,0,0,0.1)] group transition-all duration-500 overflow-hidden relative"
       >
-        <div className="flex flex-col gap-6 md:gap-10">
+        {/* Background Image & Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={`/card${index + 1}.jpg`}
+            alt=""
+            fill
+            className="object-cover transition-opacity duration-700"
+          />
+          <div 
+            className="absolute inset-0 bg-black/40"
+          />
+        </div>
+
+        <div className="flex flex-col gap-6 md:gap-10 relative z-10">
           <div 
             style={{ backgroundColor: `${color}15` }}
             className="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl flex items-center justify-center group-hover:scale-110 transition-all duration-700 shadow-2xl overflow-hidden relative"
@@ -134,22 +148,23 @@ function ServiceCardSticky({
           </div>
 
           <div>
-            <h3 className="text-3xl md:text-5xl font-black mb-4 md:mb-8 text-foreground tracking-tighter uppercase leading-none">
+            <h3 className="text-3xl md:text-5xl font-black mb-4 md:mb-8 text-white tracking-tighter uppercase leading-none text-glow-white">
               {service.title}
             </h3>
 
-            <p className="text-base md:text-xl text-muted-foreground leading-relaxed font-medium max-w-xl">
+            <p className="text-base md:text-xl text-white/70 leading-relaxed font-medium max-w-xl">
               {service.description}
             </p>
           </div>
         </div>
 
-        <div 
-          style={{ color: color, borderColor: `${color}20` }}
-          className="flex items-center font-black text-[10px] md:text-xs uppercase tracking-[0.4em] pt-8 md:pt-12 border-t group-hover:translate-x-2 transition-transform duration-500 cursor-pointer"
+        <Link 
+          href="/contact"
+          style={{ color: "white", borderColor: "rgba(255,255,255,0.2)" }}
+          className="flex items-center font-black text-[10px] md:text-xs uppercase tracking-[0.4em] pt-8 md:pt-12 border-t group-hover:translate-x-2 transition-transform duration-500 cursor-pointer text-white"
         >
           Launch Project <i className="bi bi-arrow-right ml-4"></i>
-        </div>
+        </Link>
       </div>
     </motion.div>
   );

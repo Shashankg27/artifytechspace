@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { portfolioContent } from "@/lib/data";
 import MagneticButton from "./MagneticButton";
+import Link from "next/link";
 
 export default function PortfolioSection() {
   return (
@@ -49,9 +50,9 @@ export default function PortfolioSection() {
                 
                 <div className="flex items-center justify-between">
                   <MagneticButton>
-                    <button className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_0_40px_rgba(0,159,227,0.5)] group/btn">
+                    <Link href="/portfolio" className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_0_40px_rgba(0,159,227,0.5)] group/btn">
                       <i className="bi bi-arrow-up-right text-xl group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform"></i>
-                    </button>
+                    </Link>
                   </MagneticButton>
                   
                   <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest group-hover:text-white/80 transition-colors">

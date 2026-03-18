@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { homeContent } from "@/lib/data";
@@ -105,22 +106,22 @@ export default function Hero() {
                 className="flex flex-col sm:flex-row gap-10 justify-center items-center"
               >
                 <MagneticButton>
-                  <button className="relative group px-12 py-5 rounded-full bg-primary text-white font-black text-xs uppercase tracking-[0.2em] overflow-hidden shadow-2xl shadow-primary/30">
+                  <Link href="/contact" className="relative group px-12 py-5 rounded-full bg-primary text-white font-black text-xs uppercase tracking-[0.2em] overflow-hidden shadow-2xl shadow-primary/30 inline-block">
                     <span className="relative z-10">Start a Project</span>
                     <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     <span className="absolute inset-0 z-0 bg-primary" />
                     <span className="relative z-10 group-hover:text-primary transition-colors duration-500 ml-2">
                       →
                     </span>
-                  </button>
+                  </Link>
                 </MagneticButton>
 
-                <a
-                  href="#work"
+                <Link
+                  href="/portfolio"
                   className="font-mono text-[10px] text-muted-foreground hover:text-primary transition-colors tracking-[0.4em] uppercase border-b border-muted-foreground/20 pb-2"
                 >
                   View Portfolio
-                </a>
+                </Link>
               </motion.div>
             </motion.div>
           </div>

@@ -3,9 +3,22 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useState } from "react";
+import { Send, CheckCircle2 } from "lucide-react";
 
 export default function Footer() {
   const { theme } = useTheme();
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubscribed(true);
+    setEmail("");
+    setTimeout(() => setSubscribed(false), 5000);
+  };
+
   return (
     <footer className="bg-background border-t border-border pt-20 pb-10">
       <div className="container mx-auto px-6">
@@ -72,24 +85,36 @@ export default function Footer() {
           <div>
             <h4 className="text-foreground font-bold mb-6">Newsletter</h4>
             <p className="text-muted-foreground text-sm mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
-            <form className="flex space-x-2">
+            <form onSubmit={handleSubscribe} className="flex space-x-2">
               <input 
                 type="email" 
                 placeholder="Enter your email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="bg-muted border border-border rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-primary w-full text-foreground"
+                required
               />
-              <button className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:brightness-110 transition-colors">
-                <i className="bi bi-send"></i>
+              <button 
+                type="submit"
+                disabled={subscribed}
+                className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:brightness-110 transition-colors disabled:bg-emerald-500 disabled:cursor-default"
+              >
+                {subscribed ? <CheckCircle2 className="w-4 h-4" /> : <Send className="w-4 h-4" />}
               </button>
             </form>
+            {subscribed && (
+              <p className="text-emerald-500 text-[10px] mt-2 font-bold uppercase tracking-wider">
+                Successfully Subscribed!
+              </p>
+            )}
           </div>
         </div>
 
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-muted-foreground">
           <p>© 2025 ARTIFY TECHSPACE. All rights reserved.</p>
           <div className="flex space-x-6">
-            <Link href="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-foreground transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
