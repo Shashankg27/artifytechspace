@@ -1,116 +1,230 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { siteConfig } from "@/lib/data";
+import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
 
 export default function ContactSection() {
-  const { phone, email, address, hours } = siteConfig.contact;
+  const { phone, email, address } = siteConfig.contact;
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
 
   return (
-    <section className="py-32 relative overflow-hidden noise mesh-gradient bg-background">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-24">
-          {/* Contact Info */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:w-2/5 space-y-16"
-          >
-            <div>
-              <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px] mb-6 block border-l-2 border-primary pl-4">Connection</span>
-              <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter leading-tight text-foreground">Let's build something <span className="text-primary">extraordinary.</span></h2>
-              <p className="text-muted-foreground text-sm leading-relaxed italic border-b border-border pb-12">
-                Write to us or give us a call. We will reply to you as soon as possible.
+    <section className="py-24 relative overflow-hidden bg-background">
+      {/* Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px] morphing-blob" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px] morphing-blob" />
+        <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05]" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="flex flex-col lg:flex-row gap-16 lg:gap-24"
+        >
+          {/* Left Column: Heading and Contact Info */}
+          <div className="lg:w-2/5 space-y-12">
+            <motion.div variants={itemVariants}>
+              <span className="section-header-accent mb-4 !text-[10px] !px-4 !py-1">Connect With Us</span>
+              <h2 className="text-3xl md:text-5xl mb-6 leading-[1.1] font-black tracking-tight text-foreground">
+                Let's turn your <span className="text-gradient-primary">vision</span> into digital <span className="italic">reality.</span>
+              </h2>
+              <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
+                Have a groundbreaking idea? Or need help refining your digital presence? 
+                Our team of experts is ready to collaborate.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="space-y-10">
-              <div className="flex items-center space-x-6 group">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-border flex items-center justify-center text-primary text-xl group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-xl">
-                  <i className="bi bi-geo-alt"></i>
+            <motion.div variants={itemVariants} className="space-y-4">
+              {[
+                { icon: <MapPin className="w-4 h-4" />, label: "Headquarters", value: address, color: "bg-blue-500/10 text-blue-500" },
+                { icon: <Mail className="w-4 h-4" />, label: "Email Support", value: email, color: "bg-indigo-500/10 text-indigo-500" },
+                { icon: <Phone className="w-4 h-4" />, label: "Direct Call", value: phone, color: "bg-emerald-500/10 text-emerald-500" }
+              ].map((item, idx) => (
+                <div key={idx} className="group glass p-5 rounded-[1.5rem] border border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5">
+                  <div className="flex items-center space-x-4">
+                    <div className={`w-10 h-10 rounded-xl ${item.color} flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-lg shadow-black/5`}>
+                      {item.icon}
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60 mb-0.5">{item.label}</p>
+                      <p className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">{item.value}</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-bold text-foreground text-sm mb-1 uppercase tracking-widest">Office Address</h5>
-                  <p className="text-xs text-muted-foreground">{address}</p>
-                </div>
-              </div>
+              ))}
+            </motion.div>
+          </div>
 
-              <div className="flex items-center space-x-6 group">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-border flex items-center justify-center text-primary text-xl group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-xl">
-                  <i className="bi bi-envelope"></i>
-                </div>
-                <div>
-                  <h5 className="font-bold text-foreground text-sm mb-1 uppercase tracking-widest">Email Support</h5>
-                  <p className="text-xs text-muted-foreground">{email}</p>
-                </div>
-              </div>
+          {/* Right Column: Form */}
+          <motion.div variants={itemVariants} className="lg:w-3/5">
+            <div className="glass-premium p-1 rounded-[2.5rem] shadow-2xl relative overflow-hidden shimmer-border">
+              <div className="bg-card/40 backdrop-blur-3xl p-8 md:p-10 rounded-[2.4rem] relative z-10">
+                <form className="space-y-6" onSubmit={async (e) => {
+                  e.preventDefault();
+                  
+                  const form = e.currentTarget;
+                  const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+                  const originalContent = submitBtn ? submitBtn.innerHTML : '';
+                  
+                  if (submitBtn) {
+                    submitBtn.innerHTML = '<span class="relative z-10 flex items-center justify-center space-x-3 text-white">Sending...</span>';
+                    submitBtn.disabled = true;
+                  }
 
-              <div className="flex items-center space-x-6 group">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-border flex items-center justify-center text-primary text-xl group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-xl">
-                  <i className="bi bi-telephone"></i>
-                </div>
-                <div>
-                  <h5 className="font-bold text-foreground text-sm mb-1 uppercase tracking-widest">Phone Number</h5>
-                  <p className="text-xs text-muted-foreground">{phone}</p>
-                </div>
+                  try {
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData.entries());
+                    
+                    const response = await fetch('/api/contact', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                        ...data,
+                        consent: !!data.consent
+                      }),
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                      throw new Error(result.error || 'Failed to submit form');
+                    }
+
+                    alert("Thank you! Your message has been sent successfully.");
+                    form.reset();
+                  } catch (error: any) {
+                     console.error("Submission error:", error);
+                     alert(error.message || "An error occurred. Please try again later.");
+                  } finally {
+                    if (submitBtn) {
+                      submitBtn.innerHTML = originalContent;
+                      submitBtn.disabled = false;
+                    }
+                  }
+                }}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2.5">
+                      <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground pl-1">Full Name *</label>
+                      <div className="relative group/input">
+                        <input 
+                          name="fullName"
+                          type="text" 
+                          required
+                          className="w-full bg-background/30 border border-border/60 hover:border-primary/40 focus:border-primary rounded-xl px-5 py-3.5 text-[11px] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all duration-300 text-foreground"
+                          placeholder="John Doe"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2.5">
+                      <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground pl-1">Email Address *</label>
+                      <div className="relative group/input">
+                        <input 
+                          name="email"
+                          type="email" 
+                          required
+                          className="w-full bg-background/30 border border-border/60 hover:border-primary/40 focus:border-primary rounded-xl px-5 py-3.5 text-[11px] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all duration-300 text-foreground"
+                          placeholder="john@example.com"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2.5">
+                      <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground pl-1">Phone Number (Optional)</label>
+                      <div className="relative group/input">
+                        <input 
+                          name="phoneNumber"
+                          type="tel" 
+                          className="w-full bg-background/30 border border-border/60 hover:border-primary/40 focus:border-primary rounded-xl px-5 py-3.5 text-[11px] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all duration-300 text-foreground"
+                          placeholder="+1 (555) 000-0000"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2.5">
+                      <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground pl-1">Inquiry Subject *</label>
+                      <div className="relative group/input">
+                        <input 
+                          name="subject"
+                          type="text" 
+                          required
+                          className="w-full bg-background/30 border border-border/60 hover:border-primary/40 focus:border-primary rounded-xl px-5 py-3.5 text-[11px] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all duration-300 text-foreground"
+                          placeholder="Project Collaboration"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2.5">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground pl-1">Your Message *</label>
+                    <div className="relative group/input">
+                      <textarea 
+                        name="message"
+                        rows={4}
+                        required
+                        className="w-full bg-background/30 border border-border/60 hover:border-primary/40 focus:border-primary rounded-2xl px-5 py-4 text-[11px] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all duration-300 text-foreground resize-none"
+                        placeholder="Tell us about your project..."
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3 p-3.5 rounded-xl bg-primary/5 border border-primary/10">
+                    <div className="flex items-center h-5 mt-0.5">
+                      <input
+                        id="consent"
+                        name="consent"
+                        type="checkbox"
+                        required
+                        className="w-3.5 h-3.5 rounded border-primary/30 bg-background text-primary focus:ring-primary transition-all cursor-pointer"
+                      />
+                    </div>
+                    <div className="text-[10px]">
+                      <label htmlFor="consent" className="text-muted-foreground leading-relaxed cursor-pointer select-none">
+                        I consent to having this website store my submitted information so they can respond to my inquiry. <span className="text-primary font-bold">*</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    className="group relative w-full overflow-hidden rounded-xl bg-primary py-4 text-xs font-bold uppercase tracking-[0.3em] text-primary-foreground shadow-2xl transition-all hover:shadow-primary/20"
+                  >
+                    <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                    <div className="relative flex items-center justify-center space-x-3">
+                      <span>Send Proposal</span>
+                      <Send className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </div>
+                  </button>
+                </form>
               </div>
             </div>
           </motion.div>
-
-          {/* Contact Form */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:w-3/5"
-          >
-            <div className="glass p-10 md:p-14 rounded-[3rem] shadow-2xl relative z-10 border border-border">
-              <form className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">Full Name</label>
-                    <input 
-                      type="text" 
-                      className="w-full bg-background/50 border border-border rounded-2xl px-5 py-4 text-xs focus:outline-none focus:border-primary transition-all duration-300 text-foreground"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">Your Email</label>
-                    <input 
-                      type="email" 
-                      className="w-full bg-background/50 border border-border rounded-2xl px-5 py-4 text-xs focus:outline-none focus:border-primary transition-all duration-300 text-foreground"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">Subject</label>
-                  <input 
-                    type="text" 
-                    className="w-full bg-background/50 border border-border rounded-2xl px-5 py-4 text-xs focus:outline-none focus:border-primary transition-all duration-300 text-foreground"
-                    placeholder="Project Inquiry"
-                  />
-                </div>
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">How Can We Help You?</label>
-                  <textarea 
-                    rows={6}
-                    className="w-full bg-background/50 border border-border rounded-3xl px-5 py-4 text-xs focus:outline-none focus:border-primary transition-all duration-300 text-foreground"
-                    placeholder="Tell us about your project..."
-                  />
-                </div>
-                <button 
-                  type="submit" 
-                  className="btn-theme w-full py-5 text-base uppercase tracking-[0.2em]"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

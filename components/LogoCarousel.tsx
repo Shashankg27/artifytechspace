@@ -68,9 +68,6 @@ export default function LogoCarousel() {
       </div>
       
       <div className="relative">
-        {/* Gradients to fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-r from-background via-background/80 to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-l from-background via-background/80 to-transparent z-20 pointer-events-none" />
 
         <CarouselRow items={row1Partners} direction="left" duration={40} />
         <CarouselRow items={row2Partners} direction="right" duration={45} />

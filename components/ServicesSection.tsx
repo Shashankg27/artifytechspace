@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { homeContent } from "@/lib/data";
 import { useRef, useState, useEffect } from "react";
+import * as LucideIcons from "lucide-react";
 import Image from "next/image";
 
 interface ServiceItemProps {
@@ -111,13 +112,25 @@ function ServiceCardSticky({
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
               style={{ background: `radial-gradient(circle at center, ${color}40 0%, transparent 70%)` }}
             />
-            <Image
-              src={service.icon}
-              alt={service.title}
-              width={40}
-              height={40}
-              className="w-8 h-8 md:w-10 md:h-10 relative z-10"
-            />
+            {(() => {
+              const IconComponent = (LucideIcons as any)[service.icon];
+              return IconComponent ? (
+                <IconComponent 
+                  size={42} 
+                  strokeWidth={1.5} 
+                  color="#009FE3" 
+                  className="relative z-10"
+                />
+              ) : (
+                <Image
+                  src={service.icon}
+                  alt={service.title}
+                  width={40}
+                  height={40}
+                  className="w-8 h-8 md:w-10 md:h-10 relative z-10"
+                />
+              );
+            })()}
           </div>
 
           <div>

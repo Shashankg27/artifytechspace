@@ -85,49 +85,49 @@ export const homeContent = {
         subtitle: "We offer a wide range of services to help you succeed in the digital world.",
         items: [
             {
-                icon: "/icon1.png",
+                icon: "Palette",
                 title: "Graphic Design",
                 description:
                     "Designing impactful visual assets—from logos to social media graphics—that enhance brand identity across platforms.",
             },
             {
-                icon: "/icon2.png",
+                icon: "Layout",
                 title: "Web Design",
                 description:
                     "Crafting visually stunning, user-centered designs that capture your brand's essence and engage visitors effectively.",
             },
             {
-                icon: "/icon3.png",
+                icon: "CodeXml",
                 title: "Web Development",
                 description:
                     "Building fast, responsive, and secure websites tailored to your business goals with clean code and scalable architecture.",
             },
             {
-                icon: "/icon4.png",
+                icon: "Smartphone",
                 title: "Mobile App Development",
                 description:
                     "Creating high-performance mobile apps with intuitive UI/UX for iOS and Android that users love and businesses trust.",
             },
             {
-                icon: "/icon5.png",
+                icon: "Search",
                 title: "SEO",
                 description:
                     "Optimizing your website with proven SEO strategies to improve rankings, drive traffic, and increase organic visibility.",
             },
             {
-                icon: "/icon6.png",
+                icon: "Megaphone",
                 title: "Digital Marketing",
                 description:
                     "Launching data-driven digital marketing campaigns that boost brand awareness, attract leads, and turn clicks into customers.",
             },
             {
-                icon: "/icon7.png",
+                icon: "Layers",
                 title: "UI/UX Strategy",
                 description:
                     "In-depth research and user journey mapping to create intuitive and engaging digital interfaces.",
             },
             {
-                icon: "/icon8.png",
+                icon: "Cloud",
                 title: "Cloud Solutions",
                 description:
                     "Scalable cloud infrastructure setup and management for modern, high-traffic applications.",

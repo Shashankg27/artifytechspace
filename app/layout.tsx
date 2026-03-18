@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Background3D from "@/components/Background3D";
 import TechBackground from "@/components/TechBackground";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import AdminHideWrapper from "@/components/AdminHideWrapper";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -42,7 +43,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <TechBackground />
           <Background3D />
-          <Header />
+          <AdminHideWrapper>
+            <Header />
+          </AdminHideWrapper>
           <main className="min-h-screen">
             {children}
           </main>
