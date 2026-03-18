@@ -47,7 +47,7 @@ export default function ContactSection() {
           {/* Left Column: Heading and Contact Info */}
           <div className="lg:w-2/5 space-y-12">
             <motion.div variants={itemVariants}>
-              <span className="section-header-accent mb-4 !text-[10px] !px-4 !py-1">Connect With Us</span>
+              {/* <span className="section-header-accent mb-4 !text-[10px] !px-4 !py-1">Connect With Us</span> */}
               <h2 className="text-3xl md:text-5xl mb-6 leading-[1.1] font-black tracking-tight text-foreground">
                 Let's turn your <span className="text-gradient-primary">vision</span> into digital <span className="italic">reality.</span>
               </h2>
