@@ -6,6 +6,7 @@ import { useRef, useState, useEffect } from "react";
 import * as LucideIcons from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 interface ServiceItemProps {
   service: any;
@@ -13,7 +14,7 @@ interface ServiceItemProps {
   total: number;
   scrollYProgress: MotionValue<number>;
   gradient: string;
-  color: string;
+  colors: string[];
 }
 
 function ProgressDot({
@@ -68,8 +69,9 @@ function ServiceCardSticky({
   total,
   scrollYProgress,
   gradient,
-  color,
+  colors,
 }: ServiceItemProps) {
+  const { theme } = useTheme();
   const start = index / total;
   const end = (index + 1) / total;
 
@@ -99,41 +101,135 @@ function ServiceCardSticky({
   });
 
   return (
-    <motion.div style={{ opacity, y, scale, zIndex }} className="absolute inset-0">
+    <motion.div 
+      style={{ opacity, y, scale, zIndex }} 
+      className="absolute inset-0"
+      whileHover={{ y: y.get() - 12, scale: scale.get() * 1.02 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+    >
       <div 
-        style={{ borderColor: `${color}20` }}
-        className="glass-neo p-8 md:p-16 rounded-[2rem] md:rounded-[4rem] h-full flex flex-col justify-between shadow-[0_50px_100px_rgba(0,0,0,0.1)] group transition-all duration-500 overflow-hidden relative"
+        style={{ 
+          background: theme === 'dark' ? 'rgba(255, 255, 255, 0.03)' : 'rgba(255, 255, 255, 0.4)',
+          borderColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.05)',
+          borderWidth: '1px',
+          borderStyle: 'solid'
+        }}
+        className="glass-neo p-8 md:p-16 rounded-[2.5rem] md:rounded-[4rem] h-full flex flex-col justify-between shadow-[0_40px_100px_rgba(0,0,0,0.06)] hover:shadow-[0_60px_120px_rgba(0,0,0,0.1)] group transition-all duration-700 overflow-hidden relative backdrop-blur-3xl"
       >
-        {/* Background Image & Overlay */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={`/card${index + 1}.jpg`}
-            alt=""
-            fill
-            className="object-cover transition-opacity duration-700"
+        {/* Top Accent Line — always visible, intensifies on hover */}
+        <div 
+          className="absolute top-0 left-0 right-0 h-[2px] z-20 transition-opacity duration-700 opacity-60 group-hover:opacity-100"
+          style={{ background: `linear-gradient(90deg, transparent 5%, ${colors[0]}, ${colors[1] || colors[0]}, transparent 95%)` }}
+        />
+
+        {/* ===== RICH ANIMATED BACKGROUND ===== */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+
+          {/* Animated Gradient Sweep — slow color wash across the card */}
+          <motion.div 
+            className="absolute inset-0 pointer-events-none"
+            style={{ 
+              background: `linear-gradient(135deg, ${colors[0]}18 0%, transparent 40%, ${colors[1] || colors[0]}12 70%, transparent 100%)`,
+              backgroundSize: '200% 200%'
+            }}
+            animate={{ backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
           />
+
+          {/* Large Breathing Orb — top left */}
+          <motion.div 
+            className="absolute -top-20 -left-20 w-[350px] h-[350px] rounded-full pointer-events-none"
+            style={{ background: `radial-gradient(circle, ${colors[0]}50 0%, ${colors[0]}15 40%, transparent 70%)`, filter: 'blur(60px)' }}
+            animate={{
+              scale: [1, 1.3, 1],
+              x: [0, 30, 0],
+              y: [0, 20, 0],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* Large Breathing Orb — bottom right */}
+          <motion.div 
+            className="absolute -bottom-28 -right-28 w-[400px] h-[400px] rounded-full pointer-events-none"
+            style={{ background: `radial-gradient(circle, ${colors[1] || colors[0]}40 0%, ${colors[1] || colors[0]}10 40%, transparent 70%)`, filter: 'blur(80px)' }}
+            animate={{
+              scale: [1.2, 1, 1.2],
+              x: [0, -25, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* Small Accent Orb — center-right, adds color variety */}
+          <motion.div 
+            className="absolute top-1/3 -right-10 w-[200px] h-[200px] rounded-full pointer-events-none"
+            style={{ background: `radial-gradient(circle, ${colors[0]}25 0%, transparent 70%)`, filter: 'blur(50px)' }}
+            animate={{
+              y: [0, -40, 0],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          />
+
+          {/* Animated Line Grid — drifts slowly for a "tech" feel */}
+          <motion.div 
+            className="absolute inset-0 pointer-events-none opacity-[0.04] dark:opacity-[0.07]"
+            style={{ 
+              backgroundImage: `linear-gradient(${theme === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.08)'} 1px, transparent 1px), linear-gradient(90deg, ${theme === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.08)'} 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }}
+            animate={{ backgroundPosition: ['0px 0px', '40px 40px'] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          />
+
+          {/* Dot Grid Overlay — adds subtle depth */}
           <div 
-            className="absolute inset-0 bg-black/40"
+            className="absolute inset-0 opacity-[0.025] dark:opacity-[0.04] pointer-events-none"
+            style={{ 
+              backgroundImage: `radial-gradient(${theme === 'dark' ? '#fff' : '#000'} 1px, transparent 1px)`,
+              backgroundSize: '20px 20px'
+            }}
           />
+
+          {/* Hover Shimmer — diagonal light streak */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+            <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-[2000ms] ease-in-out bg-gradient-to-r from-transparent via-white/[0.07] to-transparent skew-x-[-20deg]" />
+          </div>
         </div>
 
+        {/* Refined Gradient Border (Intensifies on Hover) */}
+        <div className="absolute inset-0 rounded-[inherit] p-[1px] pointer-events-none z-10 transition-opacity duration-700 opacity-20 group-hover:opacity-100"
+             style={{
+               background: `linear-gradient(135deg, ${colors[0]}40, transparent, ${colors[1] || colors[0]}30)`,
+               WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+               WebkitMaskComposite: 'xor',
+               maskComposite: 'exclude',
+             }}
+        />
+
         <div className="flex flex-col gap-6 md:gap-10 relative z-10">
-          <div 
-            style={{ backgroundColor: `${color}15` }}
-            className="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl flex items-center justify-center group-hover:scale-110 transition-all duration-700 shadow-2xl overflow-hidden relative"
+          <motion.div 
+            style={{ 
+              background: theme === 'dark' ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 159, 227, 0.03)',
+              borderColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 159, 227, 0.08)',
+              borderWidth: '1px',
+              borderStyle: 'solid'
+            }}
+            whileHover={{ scale: 1.05, borderColor: `${colors[0]}40` }}
+            className="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl flex items-center justify-center transition-all duration-700 overflow-hidden relative group/icon shadow-sm"
           >
             <div 
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-              style={{ background: `radial-gradient(circle at center, ${color}40 0%, transparent 70%)` }}
+              className="absolute inset-0 opacity-0 group-hover/icon:opacity-20 transition-opacity duration-700"
+              style={{ background: `radial-gradient(circle at center, ${colors[0]} 0%, transparent 70%)` }}
             />
             {(() => {
               const IconComponent = (LucideIcons as any)[service.icon];
               return IconComponent ? (
                 <IconComponent 
                   size={42} 
-                  strokeWidth={1.5} 
-                  color="#009FE3" 
-                  className="relative z-10"
+                  strokeWidth={1.2} 
+                  color={theme === 'dark' ? '#F8FAFC' : '#009FE3'} 
+                  className="relative z-10 transition-transform duration-500 group-hover/icon:scale-110"
                 />
               ) : (
                 <Image
@@ -145,14 +241,14 @@ function ServiceCardSticky({
                 />
               );
             })()}
-          </div>
+          </motion.div>
 
           <div>
-            <h3 className="text-3xl md:text-5xl font-black mb-4 md:mb-8 text-white tracking-tighter uppercase leading-none text-glow-white">
+            <h3 className="text-3xl md:text-5xl font-black mb-4 md:mb-8 text-foreground tracking-tighter uppercase leading-none group-hover:text-primary transition-colors duration-500">
               {service.title}
             </h3>
 
-            <p className="text-base md:text-xl text-white/70 leading-relaxed font-medium max-w-xl">
+            <p className="text-base md:text-xl text-foreground/70 leading-relaxed font-medium max-w-xl transition-colors duration-500 group-hover:text-foreground">
               {service.description}
             </p>
           </div>
@@ -160,10 +256,10 @@ function ServiceCardSticky({
 
         <Link 
           href="/contact"
-          style={{ color: "white", borderColor: "rgba(255,255,255,0.2)" }}
-          className="flex items-center font-black text-[10px] md:text-xs uppercase tracking-[0.4em] pt-8 md:pt-12 border-t group-hover:translate-x-2 transition-transform duration-500 cursor-pointer text-white"
+          style={{ borderColor: theme === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)' }}
+          className="flex items-center font-black text-[10px] md:text-xs uppercase tracking-[0.4em] pt-8 md:pt-12 border-t group-hover:translate-x-2 transition-transform duration-500 cursor-pointer text-foreground/50 group-hover:text-foreground relative z-10"
         >
-          Launch Project <i className="bi bi-arrow-right ml-4"></i>
+          Launch Project <i className="bi bi-arrow-right ml-4 transition-transform duration-500 group-hover:translate-x-2"></i>
         </Link>
       </div>
     </motion.div>
@@ -175,14 +271,12 @@ export default function ServicesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const cardThemes = [
-    { color: "#009FE3", gradient: "linear-gradient(135deg, rgba(0, 159, 227, 0.12) 0%, rgba(0, 159, 227, 0.04) 100%)" }, // Blue
-    { color: "#8B5CF6", gradient: "linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(139, 92, 246, 0.04) 100%)" }, // Purple
-    { color: "#EC4899", gradient: "linear-gradient(135deg, rgba(236, 72, 153, 0.12) 0%, rgba(236, 72, 153, 0.04) 100%)" }, // Pink
-    { color: "#F59E0B", gradient: "linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(245, 158, 11, 0.04) 100%)" }, // Amber
-    { color: "#10B981", gradient: "linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0.04) 100%)" }, // Emerald
-    { color: "#3B82F6", gradient: "linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.04) 100%)" }, // Indigo
-    { color: "#F43F5E", gradient: "linear-gradient(135deg, rgba(244, 63, 94, 0.12) 0%, rgba(244, 63, 94, 0.04) 100%)" }, // Rose
-    { color: "#06B6D4", gradient: "linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(6, 182, 212, 0.04) 100%)" }, // Cyan
+    { colors: ["#009FE3", "#06B6D4"], gradient: "linear-gradient(135deg, rgba(0, 159, 227, 0.12) 0%, rgba(6, 182, 212, 0.04) 100%)" }, // Blue/Cyan
+    { colors: ["#8B5CF6", "#D946EF"], gradient: "linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(217, 70, 239, 0.04) 100%)" }, // Purple/Pink
+    { colors: ["#F97316", "#FACC15"], gradient: "linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(250, 204, 21, 0.04) 100%)" }, // Orange/Yellow
+    { colors: ["#10B981", "#14B8A6"], gradient: "linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(20, 184, 166, 0.04) 100%)" }, // Green/Teal
+    { colors: ["#3B82F6", "#2DD4BF"], gradient: "linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(45, 212, 191, 0.04) 100%)" }, // Indigo/Cyan
+    { colors: ["#F43F5E", "#FB7185"], gradient: "linear-gradient(135deg, rgba(244, 63, 94, 0.12) 0%, rgba(251, 113, 133, 0.04) 100%)" }, // Rose/Pink
   ];
 
   const { scrollYProgress } = useScroll({
@@ -231,7 +325,7 @@ export default function ServicesSection() {
                   total={items.length}
                   scrollYProgress={scrollYProgress}
                   gradient={cardThemes[index % cardThemes.length].gradient}
-                  color={cardThemes[index % cardThemes.length].color}
+                  colors={cardThemes[index % cardThemes.length].colors}
                 />
               ))}
             </div>

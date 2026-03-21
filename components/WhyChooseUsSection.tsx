@@ -68,7 +68,7 @@ export default function WhyChooseUsSection() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-fluid-h3 font-semibold tracking-tight text-foreground"
+            className="text-fluid-h2 font-black tracking-tighter text-foreground"
           >
             Why{" "}
             <span className="text-primary marker-highlight">Partners</span> choose{" "}

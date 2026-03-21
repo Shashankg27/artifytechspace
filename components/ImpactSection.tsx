@@ -19,8 +19,8 @@ export default function ImpactSection() {
       
       <div className="container mx-auto px-6">
         <div className="text-center mb-24">
-          <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter uppercase">
-            Our <span className="text-primary font-outline">Impact</span> in Numbers
+          <h2 className="text-fluid-h2 font-black mb-6 tracking-tighter uppercase">
+            Our <span className="text-primary marker-highlight">Impact</span> in Numbers
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8 rounded-full" />
         </div>

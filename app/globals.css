@@ -333,4 +333,16 @@
     mask-size: 100% 200%;
     mask-position: 0 100%;
   }
+
+  /* Premium Card Animations */
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200% !important;
+    animation: gradientMove 8s ease infinite;
+  }
 }

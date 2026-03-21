@@ -449,7 +449,7 @@ export default function ProcessSection() {
             <span className="text-sm font-mono text-muted-foreground uppercase tracking-[0.2em]">Process</span>
           </motion.div>
           
-          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground">
+          <h2 className="text-fluid-h2 font-black mb-8 tracking-tighter text-foreground">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Proven</span> Process
           </h2>
           
