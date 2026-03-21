@@ -8,6 +8,7 @@ import Background3D from "@/components/Background3D";
 import TechBackground from "@/components/TechBackground";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import AdminHideWrapper from "@/components/AdminHideWrapper";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -41,6 +42,7 @@ export default function RootLayout({
         className={`${plusJakartaSans.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-background text-foreground selection:bg-primary selection:text-white`}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <SmoothScroll />
           <TechBackground />
           <Background3D />
           <AdminHideWrapper>
