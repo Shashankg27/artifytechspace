@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { homeContent } from "@/lib/data";
 import { useTheme } from "next-themes";
 import MagneticButton from "./MagneticButton";
@@ -12,7 +12,12 @@ export default function Hero() {
   const slides = homeContent.heroSlides;
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [showCursor, setShowCursor] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Custom cursor motion values
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -41,13 +46,21 @@ export default function Hero() {
     containerRef.current.style.setProperty('--mouse-y', `${y * 100}%`);
     containerRef.current.style.setProperty('--mouse-x-raw', x.toString());
     containerRef.current.style.setProperty('--mouse-y-raw', y.toString());
+
+    if (!showCursor) setShowCursor(true);
+
+    // Update motion values for custom cursor
+    mouseX.set(e.clientX);
+    mouseY.set(e.clientY);
   };
 
   return (
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative h-[110vh] w-full overflow-hidden bg-background"
+      onMouseEnter={() => setShowCursor(true)}
+      onMouseLeave={() => setShowCursor(false)}
+      className="relative h-[110vh] w-full overflow-hidden bg-background cursor-none"
     >
       {!mounted ? (
         <div className="absolute inset-0 flex items-center justify-center bg-background" />
@@ -416,6 +429,18 @@ export default function Hero() {
               <div className="w-[1px] h-20 bg-gradient-to-b from-primary/50 via-primary to-transparent" />
             </motion.div>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showCursor ? 1 : 0 }}
+            className={`fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-[9999] hidden md:block ${
+              isDark ? "bg-white" : "bg-black"
+            } -translate-x-1/2 -translate-y-1/2`}
+            style={{
+              x: mouseX,
+              y: mouseY,
+            }}
+          />
         </>
       )}
     </section>
