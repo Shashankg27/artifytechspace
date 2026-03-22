@@ -122,7 +122,7 @@ export default function Home() {
                 theme === 'dark' ? 'bg-[#050505]' : 'bg-slate-50'
               }`} />
 
-              {/* Animated SVG Dot Grid — Denser grid, higher opacity */}
+              {/* Animated SVG Dot Grid — developer blueprint feel */}
               <motion.div 
                 animate={{
                   y: [0, -30],
@@ -137,7 +137,7 @@ export default function Home() {
                 }`}
                 style={{
                   backgroundImage: `radial-gradient(#009fe3 1.2px, transparent 1.2px)`,
-                  backgroundSize: '28px 28px',
+                  backgroundSize: '30px 30px',
                 }}
               />
 
@@ -234,6 +234,61 @@ export default function Home() {
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                   className="absolute top-0 bottom-0 w-[150px] bg-gradient-to-r from-transparent via-primary/5 to-transparent z-10 skew-x-12"
                 />
+
+                {/* Corner Bracket Decorations */}
+                {/* Top-Left */}
+                <div className={`absolute top-6 left-6 w-16 h-16 border-l-2 border-t-2 rounded-tl-sm ${ theme === 'dark' ? 'border-primary/25' : 'border-primary/15' }`} />
+                <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 3, repeat: Infinity }}
+                  className="absolute top-5 left-5 w-2 h-2 rounded-full bg-primary/50" />
+                {/* Top-Right */}
+                <div className={`absolute top-6 right-6 w-16 h-16 border-r-2 border-t-2 rounded-tr-sm ${ theme === 'dark' ? 'border-primary/25' : 'border-primary/15' }`} />
+                <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+                  className="absolute top-5 right-5 w-2 h-2 rounded-full bg-primary/50" />
+                {/* Bottom-Left */}
+                <div className={`absolute bottom-6 left-6 w-16 h-16 border-l-2 border-b-2 rounded-bl-sm ${ theme === 'dark' ? 'border-primary/25' : 'border-primary/15' }`} />
+                <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                  className="absolute bottom-5 left-5 w-2 h-2 rounded-full bg-primary/50" />
+                {/* Bottom-Right */}
+                <div className={`absolute bottom-6 right-6 w-16 h-16 border-r-2 border-b-2 rounded-br-sm ${ theme === 'dark' ? 'border-primary/25' : 'border-primary/15' }`} />
+                <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
+                  className="absolute bottom-5 right-5 w-2 h-2 rounded-full bg-primary/50" />
+
+                {/* Edge Technical Labels */}
+                <div className={`absolute top-3 left-1/2 -translate-x-1/2 text-[7px] font-mono uppercase tracking-[0.3em] ${ theme === 'dark' ? 'text-primary/25' : 'text-primary/15' }`}>
+                  sys_link — connected
+                </div>
+                <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 text-[7px] font-mono uppercase tracking-[0.3em] ${ theme === 'dark' ? 'text-primary/20' : 'text-primary/12' }`}>
+                  logic.engine.v2.0
+                </div>
+
+                {/* Floating Code Snippet Cards — same as Hero */}
+                {[
+                  { code: 'exec --force-logic', x: 12, y: 25 },
+                  { code: 'node.status: active', x: 82, y: 18 },
+                  { code: '0xAF >> buffer_v2', x: 15, y: 72 },
+                  { code: 'compile --optimized', x: 75, y: 65 },
+                ].map((card, i) => (
+                  <motion.div
+                    key={`code-cta-${i}`}
+                    animate={{ y: [0, -12, 0] }}
+                    transition={{ duration: 6 + i * 2, repeat: Infinity, ease: "easeInOut", delay: i * 1.2 }}
+                    className={`absolute rounded-xl border backdrop-blur-md px-3 py-2 transition-all duration-500 ${
+                      theme === 'dark' 
+                        ? 'bg-white/[0.04] border-white/[0.08]' 
+                        : 'bg-white/70 border-black/[0.06] shadow-md shadow-black/5'
+                    }`}
+                    style={{ left: `${card.x}%`, top: `${card.y}%` }}
+                  >
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <div className="w-1 h-1 rounded-full bg-red-400/60" />
+                      <div className="w-1 h-1 rounded-full bg-yellow-400/60" />
+                      <div className="w-1 h-1 rounded-full bg-green-400/60" />
+                    </div>
+                    <code className={`text-[8px] font-mono tracking-wide ${
+                      theme === 'dark' ? 'text-primary/60' : 'text-primary/80'
+                    }`}>{card.code}</code>
+                  </motion.div>
+                ))}
               </div>
 
               {/* Dense Floating Vertical Lines — 14 lines, varied widths */}

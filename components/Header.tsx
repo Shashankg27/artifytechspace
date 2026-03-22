@@ -45,22 +45,22 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
-  const isWhiteText = (isScrolled || mobileMenuOpen) ? resolvedTheme === "dark" : true;
+  const isWhiteText = (resolvedTheme === "dark");
   const logoSrc = isWhiteText 
     ? "https://www.artifytechspace.com/images/logos/artify_techspace_logo_150px.png" 
     : "https://www.artifytechspace.com/images/logos/company-logo.png";
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed left-0 right-0 z-50 mx-auto transition-all duration-500 ease-in-out ${
         mobileMenuOpen
-          ? `py-4 bg-transparent ${theme === "dark" ? "text-white" : "text-black"}`
+          ? `top-0 w-full rounded-none py-4 bg-transparent border border-transparent ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
           : isScrolled
-            ? `py-4 shadow-lg border-b border-border bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 ${theme === "dark" ? "text-white" : "text-black"}`
-            : "py-8 bg-transparent text-white"
+            ? `top-4 w-[95%] md:w-[85%] max-w-6xl py-3 shadow-lg border border-border/50 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 rounded-full ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
+            : `top-0 w-full rounded-none py-8 bg-transparent border border-transparent ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
       }`}
     >
-      <div className="w-full px-6 md:px-12 flex items-center justify-between">
+      <div className={`w-full flex items-center justify-between transition-all duration-500 ${isScrolled && !mobileMenuOpen ? "px-6 md:px-8" : "px-6 md:px-12"}`}>
         {/* LOGO */}
         <Link href="/" className="relative h-15 w-55 group">
           {mounted && (
@@ -100,7 +100,7 @@ export default function Header() {
           <ThemeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`${isScrolled || mobileMenuOpen ? "text-foreground" : "text-white"}`}
+            className={`${isScrolled || mobileMenuOpen ? "text-foreground" : resolvedTheme === "dark" ? "text-white" : "text-black"}`}
           >
             <i
               className={`bi ${

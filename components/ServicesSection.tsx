@@ -207,6 +207,18 @@ function ServiceCardSticky({
              }}
         />
 
+        {/* Technical Corner Accents */}
+        <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-primary/20 rounded-tl-lg hidden md:block" />
+        <div className="absolute top-4 right-4 w-8 h-8 border-r border-t border-primary/20 rounded-tr-lg hidden md:block" />
+        
+        {/* Technical ID & Metadata Labels */}
+        <div className="absolute top-6 right-10 text-[8px] font-mono text-primary/30 tracking-[0.2em] hidden md:block uppercase">
+          SRV_ID: 00{index + 1}
+        </div>
+        <div className="absolute top-10 right-10 text-[8px] font-mono text-primary/30 tracking-[0.2em] hidden md:block uppercase">
+          STATUS: ACTIVE
+        </div>
+
         <div className="flex flex-col gap-6 md:gap-10 relative z-10">
           <motion.div 
             style={{ 
@@ -301,6 +313,15 @@ export default function ServicesSection() {
         <div className="container mx-auto px-6 h-full flex flex-col justify-center relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 h-full pt-20">
             <div className="w-full lg:w-5/12">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="text-primary font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] mb-4 flex items-center gap-3"
+              >
+                <span className="w-8 h-[1px] bg-primary/30" />
+                [02] SERVICES_ARCHITECTURE
+              </motion.div>
               <h2 className="text-fluid-h2 font-black tracking-tighter text-foreground mb-12 leading-[0.9]">
                 Empowering <br /> your <span className="text-primary marker-highlight">Digital</span> future <br /> through <span className="text-primary marker-highlight">Logic</span>.
               </h2>

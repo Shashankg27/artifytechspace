@@ -333,6 +333,13 @@ function Card3D({ step, index }: { step: typeof steps[0]; index: number }) {
             boxShadow: `0 15px 30px -8px var(--card-shadow), 0 0 12px -4px ${step.color}66`
           }}
         >
+          {/* Technical Corner Accents on Card Front */}
+          <div className="absolute top-3 left-3 w-4 h-4 border-l border-t border-black/20 dark:border-white/20 rounded-tl-md" />
+          <div className="absolute bottom-3 right-3 w-4 h-4 border-r border-b border-black/20 dark:border-white/20 rounded-br-md" />
+          
+          <div className="absolute top-3 right-4 text-[7px] font-mono text-black/40 dark:text-white/40 tracking-widest uppercase">
+            PROC_ID: P-{step.number}
+          </div>
           {/* Decorative Elements */}
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15)_0%,transparent_50%)] pointer-events-none" />
           
@@ -381,8 +388,8 @@ function Card3D({ step, index }: { step: typeof steps[0]; index: number }) {
                 />
               </div>
               <div className="flex justify-between items-center text-[8px] font-black uppercase tracking-widest text-black/70 dark:text-black/70">
-                <span>Process Excellence</span>
-                <span>Verified</span>
+                <span>NODE_STATUS: INITIALIZED</span>
+                <span>VERIFIED: TRUE</span>
               </div>
             </div>
 
@@ -441,17 +448,25 @@ export default function ProcessSection() {
           className="text-center mb-32"
         >
           <motion.div 
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="inline-block mb-6 px-6 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm"
+            className="text-primary font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] mb-6 flex items-center justify-center gap-3"
           >
-            <span className="text-sm font-mono text-muted-foreground uppercase tracking-[0.2em]">Process</span>
+            <span className="w-8 h-[1px] bg-primary/30" />
+            [04] STRATEGIC_WORKFLOW
+            <span className="w-8 h-[1px] bg-primary/30" />
           </motion.div>
           
-          <h2 className="text-fluid-h2 font-black mb-8 tracking-tighter text-foreground">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Proven</span> Process
-          </h2>
+          <div className="relative inline-block">
+            {/* Header Corner Accents */}
+            <div className="absolute -top-4 -left-8 w-6 h-6 border-l border-t border-primary/40 rounded-tl-lg" />
+            <div className="absolute -bottom-4 -right-8 w-6 h-6 border-r border-b border-primary/40 rounded-br-lg" />
+            
+            <h2 className="text-fluid-h2 font-black mb-8 tracking-tighter text-foreground relative z-10">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Proven</span> Process
+            </h2>
+          </div>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             A methodology built on precision, creativity, and technical excellence.
