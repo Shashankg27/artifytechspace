@@ -1,12 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { portfolioContent } from "@/lib/data";
 import MagneticButton from "./MagneticButton";
-import Link from "next/link";
+import ProjectModal from "./ProjectModal";
 
 export default function PortfolioSection() {
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openProject = (project: any) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
   return (
     <section className="py-32 bg-background relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -34,7 +43,11 @@ export default function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative rounded-[3rem] overflow-hidden aspect-[4/5] perspective-hover shimmer-border"
+              className="group relative rounded-[3rem] overflow-hidden aspect-[4/5] perspective-hover shimmer-border cursor-pointer focus:outline-none"
+              onClick={() => openProject(project)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === "Enter" && openProject(project)}
             >
               <Image 
                 src={project.image} 
@@ -50,9 +63,9 @@ export default function PortfolioSection() {
                 
                 <div className="flex items-center justify-between">
                   <MagneticButton>
-                    <Link href="/portfolio" className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_0_40px_rgba(0,159,227,0.5)] group/btn">
+                    <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_0_40px_rgba(0,159,227,0.5)] group/btn">
                       <i className="bi bi-arrow-up-right text-xl group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform"></i>
-                    </Link>
+                    </div>
                   </MagneticButton>
                   
                   <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest group-hover:text-white/80 transition-colors">
@@ -66,6 +79,15 @@ export default function PortfolioSection() {
       </div>
       
       <div className="section-blob bottom-[-10%] left-0 opacity-20" />
+
+      {/* Project Modal */}
+      <ProjectModal 
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        allProjects={portfolioContent.projects}
+        onProjectChange={(project) => setSelectedProject(project)}
+      />
     </section>
   );
 }

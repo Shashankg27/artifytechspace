@@ -57,7 +57,7 @@ export default function Header() {
           ? `top-0 w-full rounded-none py-4 bg-transparent border border-transparent ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
           : isScrolled
             ? `top-4 w-[95%] md:w-[85%] max-w-6xl py-3 shadow-lg border border-border/50 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 rounded-full ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
-            : `top-0 w-full rounded-none py-8 bg-transparent border border-transparent ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
+            : `top-0 w-full rounded-none py-3 bg-transparent border border-transparent ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
       }`}
     >
       <div className={`w-full flex items-center justify-between transition-all duration-500 ${isScrolled && !mobileMenuOpen ? "px-6 md:px-8" : "px-6 md:px-12"}`}>

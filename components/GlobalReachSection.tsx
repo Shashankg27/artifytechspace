@@ -373,21 +373,21 @@ type Hub = {
 /* ---------------- DATA ---------------- */
 
 const hubs: Hub[] = [
-  { id: "na", name: "North America", city: "New York / SF", cx: "18%", cy: "38%", projects: "120+", status: "Active" },
-  { id: "eu", name: "Europe", city: "London / Berlin", cx: "46%", cy: "28%", projects: "85+", status: "Scaling" },
-  { id: "in", name: "India", city: "Mumbai / Delhi", cx: "68%", cy: "45%", projects: "110+", status: "Core" },
-  { id: "bd", name: "Bangladesh", city: "Dhaka", cx: "71%", cy: "45%", projects: "30+", status: "Growth" },
-  { id: "as", name: "Asia Pacific", city: "Singapore / Tokyo", cx: "75%", cy: "42%", projects: "150+", status: "Core" },
-  { id: "me", name: "Middle East", city: "Dubai", cx: "58%", cy: "44%", projects: "40+", status: "Growth" },
+  { id: "na", name: "North America", city: "New York / SF", cx: "22.0%", cy: "32.7%", projects: "120+", status: "Active" },
+  { id: "eu", name: "Europe", city: "London / Berlin", cx: "52.0%", cy: "23.3%", projects: "85+", status: "Scaling" },
+  { id: "me", name: "Middle East", city: "Dubai", cx: "64.8%", cy: "39.3%", projects: "40+", status: "Growth" },
+  { id: "in", name: "India", city: "Mumbai / Delhi", cx: "70.5%", cy: "41.4%", projects: "110+", status: "Core" },
+  { id: "bd", name: "Bangladesh", city: "Dhaka", cx: "75.0%", cy: "42.0%", projects: "30+", status: "Growth" },
+  { id: "as", name: "Asia Pacific", city: "Singapore / Tokyo", cx: "78.5%", cy: "56.0%", projects: "150+", status: "Core" },
 ];
 
 const hubSvgCoords: Record<HubId, { svgX: number; svgY: number }> = {
-  na: { svgX: 108, svgY: 115 },
-  eu: { svgX: 232, svgY: 84 },
-  in: { svgX: 308, svgY: 109 },
-  bd: { svgX: 322, svgY: 108 },
-  as: { svgX: 335, svgY: 118 },
-  me: { svgX: 292, svgY: 106 },
+  na: { svgX: 440, svgY: 280 },
+  eu: { svgX: 1040, svgY: 200 },
+  me: { svgX: 1296, svgY: 337 },
+  in: { svgX: 1410, svgY: 355 },
+  bd: { svgX: 1501, svgY: 360 },
+  as: { svgX: 1570, svgY: 480 },
 };
 
 /* ---------------- COMPONENT ---------------- */
@@ -447,7 +447,7 @@ export default function GlobalReachSection() {
 
           {/* RIGHT MAP */}
           <div className="w-full lg:w-3/5 relative">
-            <div className="relative w-full" style={{ aspectRatio: "560/300" }}>
+            <div className="relative w-full" style={{ aspectRatio: "2000/857" }}>
 
               <img
                 src="/world.svg"
@@ -455,7 +455,7 @@ export default function GlobalReachSection() {
                 className="absolute inset-0 w-full h-full object-contain opacity-60"
               />
 
-              <svg viewBox="0 0 560 300" className="absolute inset-0 w-full h-full">
+              <svg viewBox="0 0 2000 857" className="absolute inset-0 w-full h-full">
 
                 {/* HUB MARKERS */}
                 {hubs.map((hub) => {
@@ -467,14 +467,15 @@ export default function GlobalReachSection() {
                       <circle
                         cx={svgX}
                         cy={svgY}
-                        r={isActive ? 4 : 2.5}
+                        r={isActive ? 15 : 10}
                         fill={isActive ? "#009FE3" : "white"}
+                        className="transition-all duration-300"
                       />
 
                       <text
-                        x={svgX + 7}
-                        y={svgY - 6}
-                        fontSize="7.5"
+                        x={svgX + 25}
+                        y={svgY - 20}
+                        fontSize="24"
                         fill={isActive ? "#009FE3" : "rgba(255,255,255,0.4)"}
                         fontFamily="monospace"
                         fontWeight="700"

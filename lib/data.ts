@@ -178,14 +178,86 @@ export const homeContent = {
 
 export const portfolioContent = {
     projects: [
-        { id: "beauty_branding", title: "Beauty Branding", category: "Branding", image: "https://www.artifytechspace.com/images/Beauty-Branding.png" },
-        { id: "ecom_branding", title: "E-commerce Redesign", category: "Branding", image: "https://www.artifytechspace.com/images/Botaniq-E-commerce-Redesign.png" },
-        { id: "crm_branding", title: "CRM Development", category: "Branding", image: "https://www.artifytechspace.com/images/crm-development.png" },
-        { id: "grow_business_branding", title: "Grow Your Business", category: "Branding", image: "https://www.artifytechspace.com/images/grow-your-business.png" },
-        { id: "admin_dashboard", title: "Admin Dashboard", category: "Branding", image: "https://www.artifytechspace.com/images/admin-dashboard.png" },
-        { id: "real_estate", title: "Real State Website Development", category: "Branding", image: "https://www.artifytechspace.com/images/Real-Estate.png" },
-        { id: "fintech_app", title: "Fintech Mobile App", category: "App Development", image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg" },
-        { id: "healthcare_portal", title: "Healthcare Portal", category: "Web Development", image: "https://images.pexels.com/photos/3183151/pexels-photo-3183151.jpeg" }
+        { 
+            id: "beauty_branding", 
+            title: "Beauty Branding", 
+            category: "Branding", 
+            image: "https://www.artifytechspace.com/images/Beauty-Branding.png",
+            description: "A comprehensive brand identity overhaul for a luxury skincare line, focusing on minimalism and organic aesthetics.",
+            techStack: ["Adobe Illustrator", "Figma", "Webflow"],
+            features: ["Logo Design", "Packaging Labels", "Brand Style Guide", "E-commerce UI"],
+            link: "https://example.com/beauty"
+        },
+        { 
+            id: "ecom_branding", 
+            title: "E-commerce Redesign", 
+            category: "Branding", 
+            image: "https://www.artifytechspace.com/images/Botaniq-E-commerce-Redesign.png",
+            description: "Revitalizing the digital storefront for Botaniq with a focus on user experience and conversion rate optimization.",
+            techStack: ["Next.js", "Tailwind CSS", "Shopify API"],
+            features: ["Dynamic Animations", "Seamless Checkout", "Personalized Recommendations"],
+            link: "https://example.com/ecom"
+        },
+        { 
+            id: "crm_branding", 
+            title: "CRM Development", 
+            category: "Branding", 
+            image: "https://www.artifytechspace.com/images/crm-development.png",
+            description: "A custom-built CRM system designed for high-scale enterprise operations with real-time data synchronization.",
+            techStack: ["React", "Node.js", "PostgreSQL", "AWS"],
+            features: ["Automated Reporting", "Lead Management", "Role-based Access Control"],
+            link: "https://example.com/crm"
+        },
+        { 
+            id: "grow_business_branding", 
+            title: "Grow Your Business", 
+            category: "Branding", 
+            image: "https://www.artifytechspace.com/images/grow-your-business.png",
+            description: "Strategic digital marketing and brand positioning for a fast-growing tech startup in the SaaS space.",
+            techStack: ["Google Analytics", "HubSpot", "SEO Automation"],
+            features: ["Content Strategy", "Performance Marketing", "Social Media Integration"],
+            link: "https://example.com/grow"
+        },
+        { 
+            id: "admin_dashboard", 
+            title: "Admin Dashboard", 
+            category: "Branding", 
+            image: "https://www.artifytechspace.com/images/admin-dashboard.png",
+            description: "An intuitive and powerful administrative interface for managing complex data streams and user analytics.",
+            techStack: ["Vue.js", "D3.js", "Firebase"],
+            features: ["Interactive Charts", "Batch Processing", "Audit Logs"],
+            link: "https://example.com/admin"
+        },
+        { 
+            id: "real_estate", 
+            title: "Real State Website Development", 
+            category: "Branding", 
+            image: "https://www.artifytechspace.com/images/Real-Estate.png",
+            description: "A premium real estate listing platform with advanced filtering and 360-degree virtual tour integrations.",
+            techStack: ["Next.js", "Three.js", "Mapbox"],
+            features: ["Property Matching", "Virtual Tours", "Agent Messaging System"],
+            link: "https://example.com/realestate"
+        },
+        { 
+            id: "fintech_app", 
+            title: "Fintech Mobile App", 
+            category: "App Development", 
+            image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+            description: "A secure and user-friendly mobile application for digital banking and cryptocurrency management.",
+            techStack: ["React Native", "Swift", "Golang", "Kubernetes"],
+            features: ["Biometric Auth", "Instant Transfers", "Portfolio Tracking"],
+            link: "https://example.com/fintech"
+        },
+        { 
+            id: "healthcare_portal", 
+            title: "Healthcare Portal", 
+            category: "Web Development", 
+            image: "https://images.pexels.com/photos/3183151/pexels-photo-3183151.jpeg",
+            description: "A unified patient and provider portal designed for efficiency, accessibility, and HIPAA compliance.",
+            techStack: ["Next.js", "Prisma", "Azure", "Auth0"],
+            features: ["Telehealth Integration", "Medical Records Vault", "Secure Prescriptions"],
+            link: "https://example.com/healthcare"
+        }
     ],
     industries: [
         { name: "E-commerce & Retail", description: "We help online stores grow through engaging UI, secure checkouts, and SEO strategies that convert." },
