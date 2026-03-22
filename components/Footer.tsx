@@ -3,13 +3,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
 
 export default function Footer() {
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,19 +24,27 @@ export default function Footer() {
     setTimeout(() => setSubscribed(false), 5000);
   };
 
+  const currentTheme = resolvedTheme || theme;
+  const logoSrc = currentTheme === "dark" 
+    ? "https://www.artifytechspace.com/images/logos/artify_techspace_logo_150px.png" 
+    : "https://www.artifytechspace.com/images/logos/company-logo.png";
+  
   return (
     <footer className="bg-background border-t border-border pt-20 pb-10">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Company Info */}
           <div className="space-y-6">
-            <Image
-              src={theme === "dark" ? "https://www.artifytechspace.com/images/logos/artify_techspace_logo_150px.png" : "https://www.artifytechspace.com/images/logos/company-logo.png"}
-              alt="Artify TechSpace"
-              width={150}
-              height={50}
-              className="object-contain dark:invert-0 light:invert"
-            />
+            {mounted && (
+              <Image
+                src={logoSrc}
+                alt="Artify TechSpace"
+                width={150}
+                height={50}
+                className="object-contain"
+              />
+            )}
+            {!mounted && <div className="h-[50px] w-[150px]" />}
             <p className="text-muted-foreground text-sm leading-relaxed">
               Artify Tech Space is your trusted digital partner, delivering creative, scalable solutions in web design, development, mobile apps, SEO, and digital marketing.
             </p>

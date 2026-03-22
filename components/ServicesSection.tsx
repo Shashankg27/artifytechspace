@@ -228,8 +228,10 @@ function ServiceCardSticky({
                 <IconComponent 
                   size={42} 
                   strokeWidth={1.2} 
-                  color={theme === 'dark' ? '#F8FAFC' : '#009FE3'} 
-                  className="relative z-10 transition-transform duration-500 group-hover/icon:scale-110"
+                  stroke="#009FE3"
+                  fill="#F8FAFC"
+                  fillOpacity={0.3}
+                  className="relative z-10 transition-transform duration-500 group-hover/icon:scale-110 drop-shadow-[0_0_10px_rgba(0,159,227,0.4)]"
                 />
               ) : (
                 <Image

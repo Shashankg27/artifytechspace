@@ -10,7 +10,7 @@ export default function IndustriesSection() {
       <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-24">
         <div className="lg:w-1/2">
           <span className="text-primary font-black tracking-widest uppercase text-[10px] mb-4 block border-l-2 border-primary pl-4">Domains</span>
-          <h2 className="text-3xl md:text-5xl font-black mb-12 tracking-tighter text-foreground">Industries we work in</h2>
+          <h2 className="text-3xl md:text-5xl font-black mb-12 tracking-tighter text-foreground">Industries <span className="text-primary marker-highlight">we</span> work <span className="text-primary marker-highlight">in</span></h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
             {portfolioContent.industries.map((industry, index) => (
               <motion.div

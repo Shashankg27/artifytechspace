@@ -16,8 +16,13 @@ const menuItems = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -40,6 +45,11 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
+  const isWhiteText = (isScrolled || mobileMenuOpen) ? resolvedTheme === "dark" : true;
+  const logoSrc = isWhiteText 
+    ? "https://www.artifytechspace.com/images/logos/artify_techspace_logo_150px.png" 
+    : "https://www.artifytechspace.com/images/logos/company-logo.png";
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -53,13 +63,16 @@ export default function Header() {
       <div className="w-full px-6 md:px-12 flex items-center justify-between">
         {/* LOGO */}
         <Link href="/" className="relative h-15 w-55 group">
-          <Image
-            src="https://www.artifytechspace.com/images/logos/company-logo.png"
-            alt="Artify TechSpace"
-            fill
-            priority
-            className="object-contain object-left transition-transform duration-500 group-hover:scale-105"
-          />
+          {mounted && (
+            <Image
+              src={logoSrc}
+              alt="Artify TechSpace"
+              fill
+              priority
+              className="object-contain object-left transition-transform duration-500 group-hover:scale-105"
+            />
+          )}
+          {!mounted && <div className="h-10 w-40" />}
         </Link>
 
         {/* DESKTOP MENU */}
