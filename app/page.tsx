@@ -1,6 +1,7 @@
 "use client";
 
 import Hero from "@/components/Hero";
+import Link from "next/link";
 import LogoCarousel from "@/components/LogoCarousel";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -447,33 +448,37 @@ export default function Home() {
               className="flex flex-col sm:flex-row justify-center gap-4"
             >
               {/* Primary */}
-              <button
-                className="group/btn relative px-10 py-4 rounded-full font-black text-xs uppercase tracking-[0.25em] text-white overflow-hidden transition-transform hover:scale-[1.03] active:scale-[0.98]"
-                style={{
-                  background: 'linear-gradient(135deg, #009fe3, #0077b3)',
-                  boxShadow: '0 8px 32px rgba(0,159,227,0.4), 0 2px 8px rgba(0,159,227,0.2)',
-                }}
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Launch Your Project
-                  <svg className="w-3.5 h-3.5 translate-x-0 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </span>
-                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
-              </button>
+              <Link href="/contact" className="contents">
+                <button
+                  className="group/btn relative px-10 py-4 rounded-full font-black text-xs uppercase tracking-[0.25em] text-white overflow-hidden transition-transform hover:scale-[1.03] active:scale-[0.98]"
+                  style={{
+                    background: 'linear-gradient(135deg, #009fe3, #0077b3)',
+                    boxShadow: '0 8px 32px rgba(0,159,227,0.4), 0 2px 8px rgba(0,159,227,0.2)',
+                  }}
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Launch Your Project
+                    <svg className="w-3.5 h-3.5 translate-x-0 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </span>
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                </button>
+              </Link>
 
               {/* Secondary */}
-              <button className={`group/btn2 px-10 py-4 rounded-full font-black text-xs uppercase tracking-[0.25em] border transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-2 ${
-                theme === 'dark' 
-                  ? 'border-white/10 text-white/70 hover:border-white/20 hover:text-white hover:bg-white/5' 
-                  : 'border-black/10 text-[#050505]/60 hover:border-black/20 hover:text-[#050505] hover:bg-black/5'
-              }`}>
-                Explore Our Work
-                <svg className="w-3.5 h-3.5 opacity-50 group-hover/btn2:opacity-100 translate-x-0 group-hover/btn2:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </button>
+              <Link href="/portfolio" className="contents">
+                <button className={`group/btn2 px-10 py-4 rounded-full font-black text-xs uppercase tracking-[0.25em] border transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-2 ${
+                  theme === 'dark' 
+                    ? 'border-white/10 text-white/70 hover:border-white/20 hover:text-white hover:bg-white/5' 
+                    : 'border-black/10 text-[#050505]/60 hover:border-black/20 hover:text-[#050505] hover:bg-black/5'
+                }`}>
+                  Explore Our Work
+                  <svg className="w-3.5 h-3.5 opacity-50 group-hover/btn2:opacity-100 translate-x-0 group-hover/btn2:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </button>
+              </Link>
             </motion.div>
 
             {/* Bottom stats strip */}
