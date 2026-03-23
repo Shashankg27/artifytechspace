@@ -48,11 +48,11 @@ export default function ContactPage() {
                   height="100%"
                   frameBorder="0"
                   style={{ border: 0 }}
-                  src="https://maps.google.com/maps?q=E%2093/8,%203rd%20Floor,%20Harinal%20Road,%20East%20Joydevpur,%20Gazipur&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=Harinal%20Road,%20East%20Joydevpur,%20Gazipur&t=&z=16&ie=UTF8&iwloc=near&output=embed"
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="grayscale hover:grayscale-0 transition-all duration-700"
+                  className="hover:grayscale-0 transition-all duration-700"
                 ></iframe>
               </div>
             </div>

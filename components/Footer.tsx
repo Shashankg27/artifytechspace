@@ -80,6 +80,9 @@ export default function Footer() {
               <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-primary text-sm transition-colors">Contact Us</Link>
               </li>
+              <li>
+                <Link href="/faqs" className="text-muted-foreground hover:text-primary text-sm transition-colors">FAQs</Link>
+              </li>
             </ul>
           </div>
 
@@ -126,6 +129,7 @@ export default function Footer() {
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-muted-foreground">
           <p>© 2025 ARTIFY TECHSPACE. All rights reserved.</p>
           <div className="flex space-x-6">
+            <Link href="/faqs" className="hover:text-foreground transition-colors">FAQs</Link>
             <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
           </div>

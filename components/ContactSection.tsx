@@ -212,7 +212,7 @@ export default function ContactSection() {
 
                   <button 
                     type="submit" 
-                    className="group relative w-full overflow-hidden rounded-xl bg-primary py-4 text-xs font-bold uppercase tracking-[0.3em] text-primary-foreground shadow-2xl transition-all hover:shadow-primary/20"
+                    className="group relative w-fit px-12 overflow-hidden rounded-xl bg-primary py-4 text-xs font-bold uppercase tracking-[0.3em] text-primary-foreground shadow-2xl transition-all hover:shadow-primary/20"
                   >
                     <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     <div className="relative flex items-center justify-center space-x-3">

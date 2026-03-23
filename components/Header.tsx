@@ -12,6 +12,7 @@ const menuItems = [
   { label: "About", url: "/about" },
   { label: "Services", url: "/services" },
   { label: "Portfolio", url: "/portfolio" },
+  { label: "FAQs", url: "/faqs" },
 ];
 
 export default function Header() {

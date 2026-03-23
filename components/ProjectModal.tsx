@@ -56,7 +56,7 @@ export default function ProjectModal({ project, isOpen, onClose, allProjects, on
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-background/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-300 shadow-xl"
+              className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-background/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-primary hover:text-white hover:bg-primary hover:border-primary transition-all duration-300 shadow-xl"
             >
               <X size={24} />
             </button>
