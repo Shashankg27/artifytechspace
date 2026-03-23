@@ -373,12 +373,12 @@ type Hub = {
 /* ---------------- DATA ---------------- */
 
 const hubs: Hub[] = [
-  { id: "na", name: "North America", city: "New York / SF", cx: "22.0%", cy: "32.7%", projects: "120+", status: "Active" },
-  { id: "eu", name: "Europe", city: "London / Berlin", cx: "52.0%", cy: "23.3%", projects: "85+", status: "Scaling" },
-  { id: "me", name: "Middle East", city: "Dubai", cx: "64.8%", cy: "39.3%", projects: "40+", status: "Growth" },
+  // { id: "na", name: "North America", city: "New York / SF", cx: "22.0%", cy: "32.7%", projects: "120+", status: "Active" },
+  // { id: "eu", name: "Europe", city: "London / Berlin", cx: "52.0%", cy: "23.3%", projects: "85+", status: "Scaling" },
+  // { id: "me", name: "Middle East", city: "Dubai", cx: "64.8%", cy: "39.3%", projects: "40+", status: "Growth" },
   { id: "in", name: "India", city: "Mumbai / Delhi", cx: "70.5%", cy: "41.4%", projects: "110+", status: "Core" },
   { id: "bd", name: "Bangladesh", city: "Dhaka", cx: "75.0%", cy: "42.0%", projects: "30+", status: "Growth" },
-  { id: "as", name: "Asia Pacific", city: "Singapore / Tokyo", cx: "78.5%", cy: "56.0%", projects: "150+", status: "Core" },
+  // { id: "as", name: "Asia Pacific", city: "Singapore / Tokyo", cx: "78.5%", cy: "56.0%", projects: "150+", status: "Core" },
 ];
 
 const hubSvgCoords: Record<HubId, { svgX: number; svgY: number }> = {
