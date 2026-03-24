@@ -358,7 +358,7 @@ import { useState, useEffect } from "react";
 
 /* ---------------- TYPES ---------------- */
 
-type HubId = "na" | "eu" | "as" | "me" | "in" | "bd";
+type HubId = "na" | "eu" | "as" | "uae" | "in" | "bd";
 
 type Hub = {
   id: HubId;
@@ -373,9 +373,9 @@ type Hub = {
 /* ---------------- DATA ---------------- */
 
 const hubs: Hub[] = [
-  // { id: "na", name: "North America", city: "New York / SF", cx: "22.0%", cy: "32.7%", projects: "120+", status: "Active" },
-  // { id: "eu", name: "Europe", city: "London / Berlin", cx: "52.0%", cy: "23.3%", projects: "85+", status: "Scaling" },
-  // { id: "me", name: "Middle East", city: "Dubai", cx: "64.8%", cy: "39.3%", projects: "40+", status: "Growth" },
+  { id: "na", name: "North America", city: "New York / SF", cx: "22.0%", cy: "32.7%", projects: "120+", status: "Active" },
+  { id: "eu", name: "Europe", city: "London / Berlin", cx: "52.0%", cy: "23.3%", projects: "85+", status: "Scaling" },
+  { id: "uae", name: "UAE", city: "Dubai", cx: "64.8%", cy: "39.3%", projects: "40+", status: "Growth" },
   { id: "in", name: "India", city: "Mumbai / Delhi", cx: "70.5%", cy: "41.4%", projects: "110+", status: "Core" },
   { id: "bd", name: "Bangladesh", city: "Dhaka", cx: "75.0%", cy: "42.0%", projects: "30+", status: "Growth" },
   // { id: "as", name: "Asia Pacific", city: "Singapore / Tokyo", cx: "78.5%", cy: "56.0%", projects: "150+", status: "Core" },
@@ -384,9 +384,9 @@ const hubs: Hub[] = [
 const hubSvgCoords: Record<HubId, { svgX: number; svgY: number }> = {
   na: { svgX: 440, svgY: 280 },
   eu: { svgX: 1040, svgY: 200 },
-  me: { svgX: 1296, svgY: 337 },
-  in: { svgX: 1410, svgY: 355 },
-  bd: { svgX: 1501, svgY: 360 },
+  uae: { svgX: 1236, svgY: 337 },
+  in: { svgX: 1420, svgY: 355 },
+  bd: { svgX: 1481, svgY: 345 },
   as: { svgX: 1570, svgY: 480 },
 };
 
@@ -417,7 +417,7 @@ export default function GlobalReachSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter mb-4">
+              <h2 className="text-fluid-h2 font-black leading-[0.9] tracking-tighter mb-4">
                 <span className="block">Where</span>
                 <span className="block">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#009FE3] via-white to-[#009FE3]">

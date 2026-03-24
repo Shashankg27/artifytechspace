@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
           >
             Social Proof
           </motion.span> */}
-          <h2 className="text-xl md:text-3xl font-black mb-6 tracking-tighter text-foreground">What our <span className="text-primary marker-highlight">Partners</span> say</h2>
+          <h2 className="text-fluid-h2 font-black mb-8 tracking-tighter text-foreground">What our <span className="text-primary marker-highlight">Partners</span> say</h2>
           <p className="text-muted-foreground text-sm italic border-b border-primary/10 pb-8 inline-block mx-auto">{subtitle}</p>
         </div>
 

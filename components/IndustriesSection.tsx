@@ -15,10 +15,10 @@ export default function IndustriesSection() {
             viewport={{ once: true }}
             className="text-primary font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] mb-4 flex items-center gap-3"
           >
-            <span className="w-8 h-[1px] bg-primary/30" />
-            [03] INDUSTRIAL_DOMAINS
+            {/* <span className="w-8 h-[1px] bg-primary/30" />
+            [03] INDUSTRIAL_DOMAINS */}
           </motion.div>
-          <h2 className="text-3xl md:text-5xl font-black mb-12 tracking-tighter text-foreground">Industries <span className="text-primary marker-highlight">we</span> work <span className="text-primary marker-highlight">in</span></h2>
+          <h2 className="text-fluid-h2 font-black mb-12 tracking-tighter text-foreground">Industries <span className="text-primary marker-highlight">we</span> work <span className="text-primary marker-highlight">in</span></h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
             {portfolioContent.industries.map((industry, index) => (
               <motion.div

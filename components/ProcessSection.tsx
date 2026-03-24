@@ -453,9 +453,9 @@ export default function ProcessSection() {
             viewport={{ once: true }}
             className="text-primary font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] mb-6 flex items-center justify-center gap-3"
           >
-            <span className="w-8 h-[1px] bg-primary/30" />
+            {/* <span className="w-8 h-[1px] bg-primary/30" />
             [04] STRATEGIC_WORKFLOW
-            <span className="w-8 h-[1px] bg-primary/30" />
+            <span className="w-8 h-[1px] bg-primary/30" /> */}
           </motion.div>
           
           <div className="relative inline-block">

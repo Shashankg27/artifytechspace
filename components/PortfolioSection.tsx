@@ -27,7 +27,7 @@ export default function PortfolioSection() {
           >
             Our Masterpieces
           </motion.span>
-          <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter text-foreground text-glow uppercase">
+          <h2 className="text-fluid-h2 font-black mb-8 tracking-tighter text-foreground text-glow uppercase">
             Portfolio <span className="text-primary font-outline">Projects</span>
           </h2>
           <p className="text-sm text-muted-foreground italic max-w-2xl mx-auto border-y border-primary/10 py-4">

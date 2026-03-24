@@ -319,8 +319,8 @@ export default function ServicesSection() {
                 viewport={{ once: true }}
                 className="text-primary font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] mb-4 flex items-center gap-3"
               >
-                <span className="w-8 h-[1px] bg-primary/30" />
-                [02] SERVICES_ARCHITECTURE
+                {/* <span className="w-8 h-[1px] bg-primary/30" />
+                [02] SERVICES_ARCHITECTURE */}
               </motion.div>
               <h2 className="text-fluid-h2 font-black tracking-tighter text-foreground mb-12 leading-[0.9]">
                 Empowering <br /> your <span className="text-primary marker-highlight">Digital</span> future <br /> through <span className="text-primary marker-highlight">Logic</span>.

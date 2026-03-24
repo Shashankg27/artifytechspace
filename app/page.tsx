@@ -368,7 +368,7 @@ export default function Home() {
             <div className="relative z-10">
 
             {/* Top label */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -385,7 +385,7 @@ export default function Home() {
                 }`} />
                 Ready to Dominate
               </span>
-            </motion.div>
+            </motion.div> */}
 
             {/* Headline with Chromatic Aberration Hover Effect */}
             <motion.h2
