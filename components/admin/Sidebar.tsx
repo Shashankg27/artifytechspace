@@ -13,6 +13,7 @@ import {
 
 const menuItems = [
   { name: "Submissions", icon: Mail, path: "/admin/dashboard" },
+  { name: "Portfolio", icon: LayoutDashboard, path: "/admin/portfolio" },
 ];
 
 export default function Sidebar() {

@@ -5,10 +5,27 @@ import Image from "next/image";
 import { portfolioContent } from "@/lib/data";
 import MagneticButton from "./MagneticButton";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function CaseStudiesSection() {
   // Show first 3 projects for the featured section
-  const featuredProjects = portfolioContent.projects.slice(0, 3);
+  const [featuredProjects, setFeaturedProjects] = useState<any[]>(portfolioContent.projects.slice(0, 3));
+
+  useEffect(() => {
+    fetch("/api/portfolio")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setFeaturedProjects(
+            data.slice(0, 3).map((p: any) => ({
+              ...p,
+              id: p._id,
+            }))
+          );
+        }
+      })
+      .catch(console.error);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center py-32 overflow-hidden bg-black">
@@ -74,16 +91,18 @@ export default function CaseStudiesSection() {
                 transition={{ delay: index * 0.2, duration: 1 }}
                 className="h-full w-full"
               >
-                <Image 
-                  src={project.image} 
-                  alt={project.title} 
-                  fill 
-                  className="object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-[1.5s] ease-out"
-                />
+                {project.images && project.images.length > 0 && (
+                  <Image 
+                    src={project.images[0]} 
+                    alt={project.title} 
+                    fill 
+                    className="object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-[1.5s] ease-out"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                 
                 <div className="absolute inset-0 p-10 flex flex-col justify-end">
-                  <span className="text-primary font-black text-[8px] uppercase tracking-[0.4em] mb-2">{project.category}</span>
+                  <span className="text-primary font-black text-[8px] uppercase tracking-[0.4em] mb-2">{project.categoryId?.name || "Uncategorized"}</span>
                   <h3 className="text-2xl font-black text-white tracking-tighter mb-6 group-hover:translate-x-2 transition-transform duration-500">
                     {project.title}
                   </h3>
