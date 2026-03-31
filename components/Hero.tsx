@@ -71,15 +71,15 @@ export default function Hero() {
             {/* Base Gradient */}
             <div className={`absolute inset-0 transition-colors duration-[2s] ${
               isDark 
-                ? 'bg-[radial-gradient(ellipse_at_50%_0%,#009fe308_0%,#050505_70%)]' 
-                : 'bg-[radial-gradient(ellipse_at_50%_0%,#009fe306_0%,#f8fafc_70%)]'
+                ? 'bg-[radial-gradient(ellipse_at_50%_0%,#009fe304_0%,#050505_70%)]' 
+                : 'bg-[radial-gradient(ellipse_at_50%_0%,#009fe303_0%,#f8fafc_70%)]'
             }`} />
 
             {/* Animated Dot Grid — dense but refined */}
             <motion.div 
               animate={{ y: [0, -28] }}
               transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-              className={`absolute inset-0 ${ isDark ? 'opacity-[0.2]' : 'opacity-[0.4]' }`}
+              className={`absolute inset-0 ${ isDark ? 'opacity-[0.1]' : 'opacity-[0.2]' }`}
               style={{
                 backgroundImage: `radial-gradient(${isDark ? '#009fe3' : '#94a3b8'} 1.2px, transparent 1.2px)`,
                 backgroundSize: '30px 30px',
@@ -88,9 +88,9 @@ export default function Hero() {
 
             {/* Interactive Mouse Spotlight */}
             <div
-              className={`absolute inset-0 transition-opacity duration-1000 ${ isDark ? 'opacity-40' : 'opacity-60' }`}
+              className={`absolute inset-0 transition-opacity duration-1000 ${ isDark ? 'opacity-20' : 'opacity-40' }`}
               style={{
-                background: `radial-gradient(700px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${isDark ? '#009fe328' : '#009fe338'}, transparent 70%)`,
+                background: `radial-gradient(700px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${isDark ? '#009fe315' : '#009fe325'}, transparent 70%)`,
               }}
             />
 
@@ -103,7 +103,7 @@ export default function Hero() {
                 rotateY: 'calc((var(--mouse-x-raw, 0.5) - 0.5) * -10deg)',
               }}
               className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[125vh] h-[125vh] transition-all duration-500 ease-out ${
-                isDark ? 'opacity-[0.15]' : 'opacity-[0.35]'
+                isDark ? 'opacity-[0.08]' : 'opacity-[0.2]'
               }`}
             >
               <svg viewBox="0 0 100 100" className="w-full h-full stroke-primary fill-none">

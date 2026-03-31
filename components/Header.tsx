@@ -48,8 +48,8 @@ export default function Header() {
 
   const isWhiteText = (resolvedTheme === "dark");
   const logoSrc = isWhiteText 
-    ? "https://www.artifytechspace.com/images/logos/artify_techspace_logo_150px.png" 
-    : "https://www.artifytechspace.com/images/logos/company-logo.png";
+    ? "/Logos/Dark.png" 
+    : "/Logos/Light.png";
 
   return (
     <nav
@@ -57,8 +57,8 @@ export default function Header() {
         mobileMenuOpen
           ? `top-0 w-full rounded-none py-4 bg-transparent border border-transparent ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
           : isScrolled
-            ? `top-4 w-[95%] md:w-[85%] max-w-6xl py-3 shadow-lg border border-border/50 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 rounded-full ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
-            : `top-0 w-full rounded-none py-3 bg-transparent border border-transparent ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
+            ? `top-4 w-[95%] md:w-[85%] max-w-6xl py-1 shadow-lg border border-border/50 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 rounded-full ${resolvedTheme === "dark" ? "text-white" : "text-black"}`
+            : `top-0 w-full rounded-none py-3 bg-transparent border border-transparent`
       }`}
     >
       <div className={`w-full flex items-center justify-between transition-all duration-500 ${isScrolled && !mobileMenuOpen ? "px-6 md:px-8" : "px-6 md:px-12"}`}>
@@ -132,7 +132,17 @@ export default function Header() {
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="absolute top-full left-0 right-0 w-full z-[70] md:hidden overflow-hidden"
             >
-            <div className="p-6 flex flex-col space-y-2">
+              <div className="p-6 flex flex-col space-y-4">
+                {/* Logo in Mobile Menu */}
+                <div className="flex justify-center mb-4">
+                  <Image
+                    src={logoSrc}
+                    alt="Artify TechSpace"
+                    width={180}
+                    height={60}
+                    className="object-contain"
+                  />
+                </div>
               {menuItems.map((item, index) => (
                 <motion.div
                   key={item.label}
