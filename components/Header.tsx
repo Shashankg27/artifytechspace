@@ -48,8 +48,8 @@ export default function Header() {
 
   const isWhiteText = (resolvedTheme === "dark");
   const logoSrc = isWhiteText 
-    ? "/Logos/Dark.png" 
-    : "/Logos/Light.png";
+    ? "/logo/Dark.png" 
+    : "/logo/Light.png";
 
   return (
     <nav

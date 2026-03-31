@@ -26,8 +26,8 @@ export default function Footer() {
 
   const currentTheme = resolvedTheme || theme;
   const logoSrc = currentTheme === "dark" 
-    ? "/Logos/Dark.png" 
-    : "/Logos/Light.png";
+    ? "/logo/Dark.png" 
+    : "/logo/Light.png";
   
   return (
     <footer className="bg-background border-t border-border pt-20 pb-10">
