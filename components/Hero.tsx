@@ -32,13 +32,21 @@ export default function Hero() {
     const timer = setInterval(() => {
       setCurrentSlide((prev: number) => (prev + 1) % slides.length);
     }, 8000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
+
+    // Hide custom cursor immediately on scroll to prevent "sticky" dot
+    const handleScroll = () => setShowCursor(false);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [slides.length, scrollYProgress]);
 
   const isDark = mounted ? resolvedTheme === "dark" : true;
   
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || scrollYProgress.get() >= 0.79) return;
     const { left, top, width, height } = containerRef.current.getBoundingClientRect();
     const x = (e.clientX - left) / width;
     const y = (e.clientY - top) / height;
@@ -60,7 +68,7 @@ export default function Hero() {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setShowCursor(true)}
       onMouseLeave={() => setShowCursor(false)}
-      className="relative h-[110vh] w-full overflow-hidden bg-background cursor-none"
+      className={`relative h-[110vh] w-full overflow-hidden bg-background ${showCursor ? "cursor-none" : ""}`}
     >
       {!mounted ? (
         <div className="absolute inset-0 flex items-center justify-center bg-background" />
