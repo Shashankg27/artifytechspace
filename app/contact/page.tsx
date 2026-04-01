@@ -48,7 +48,7 @@ export default function ContactPage() {
                   height="100%"
                   frameBorder="0"
                   style={{ border: 0 }}
-                  src="https://maps.google.com/maps?q=Harinal%20Road,%20East%20Joydevpur,%20Gazipur&t=&z=16&ie=UTF8&iwloc=near&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d800.00!2d90.4322136!3d24.0003565!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874b3dbd6eb24ac5%3A0x7381a542b987ba45!2sArtify%20Techspace!5e0!3m2!1sen!2sin!4v1775062944166!5m2!1sen!2sin"
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
