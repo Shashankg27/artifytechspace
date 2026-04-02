@@ -47,9 +47,14 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
   const isWhiteText = (resolvedTheme === "dark");
-  const logoSrc = isWhiteText 
+  const previousLogoSrc = !isWhiteText
+    ? "https://www.artifytechspace.com/images/logos/company-logo.png"
+    : "https://www.artifytechspace.com/images/logos/artify_techspace_logo_150px.png";
+  const newLogoSrc = isWhiteText 
     ? "/logo/Dark.png" 
     : "/logo/Light.png";
+
+  const logoSrc = (isScrolled && !mobileMenuOpen) ? newLogoSrc : previousLogoSrc;
 
   return (
     <nav
